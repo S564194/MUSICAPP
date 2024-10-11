@@ -1,4 +1,5 @@
 Teammates :
 Rishil Reddy Dandoori
 Maneesha Karamsetty
-Sai Sarvani Majji
+Sai  Teja Sarvani Majji
+Srujuna Polluri
