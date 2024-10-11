@@ -1,0 +1,6 @@
+package com.example.melodify_your_personal_music_companion;
+import android.media.MediaPlayer;
+
+public class MyMediaPlayer {
+   
+}
