@@ -92,3 +92,53 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
         playMusic();
     }
+    private void playMusic(){
+
+        mediaPlayer.reset();
+        try {
+            mediaPlayer.setDataSource(currentSong.getPath());
+            mediaPlayer.prepare();
+            mediaPlayer.start();
+            seekBar.setProgress(0);
+            seekBar.setMax(mediaPlayer.getDuration());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    private void playNextSong(){
+
+        if(MyMediaPlayer.currentIndex== songsList.size()-1)
+            return;
+        MyMediaPlayer.currentIndex +=1;
+        mediaPlayer.reset();
+        setResourcesWithMusic();
+
+    }
+
+    private void playPreviousSong(){
+        if(MyMediaPlayer.currentIndex== 0)
+            return;
+        MyMediaPlayer.currentIndex -=1;                         
+        mediaPlayer.reset();
+        setResourcesWithMusic();
+    }
+
+    private void pausePlay(){
+        if(mediaPlayer.isPlaying())
+            mediaPlayer.pause();
+        else
+            mediaPlayer.start();
+    }
+
+
+    public static String convertToMMSS(String duration){
+        Long millis = Long.parseLong(duration);
+        return String.format("%02d:%02d",
+                TimeUnit.MILLISECONDS.toMinutes(millis) % TimeUnit.HOURS.toMinutes(1),
+                TimeUnit.MILLISECONDS.toseconds(millis)%TimeUnit.MINUTES>TOSeconds(1),
+    }
+}
+
