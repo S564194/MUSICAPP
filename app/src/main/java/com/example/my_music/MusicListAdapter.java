@@ -43,7 +43,7 @@ public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.View
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //navigate to another acitivty
+                
  
                 MyMediaPlayer.getInstance().reset();
                 MyMediaPlayer.currentIndex = position;
@@ -53,7 +53,7 @@ public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.View
                 context.startActivity(intent);
  
             }
-        });                           mediaPlayer.start();
+        });                         
  
     }
  
