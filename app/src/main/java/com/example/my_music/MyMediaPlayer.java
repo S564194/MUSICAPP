@@ -10,7 +10,7 @@ public class MyMediaPlayer {
         
     }
 
-    public static MediaPlayer getInstance() {
+    public static MediaPlayer getInstance() {        
         if (instance == null) {
             instance = new MediaPlayer();
         }

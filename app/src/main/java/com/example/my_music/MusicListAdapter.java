@@ -53,7 +53,7 @@ public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.View
                 context.startActivity(intent);
  
             }
-        });
+        });                           mediaPlayer.start();
  
     }
  
