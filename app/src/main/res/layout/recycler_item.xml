@@ -30,4 +30,4 @@
         tools:text="Music"
         android:textColor="@color/black"/>
 
-</RelativeLayout> 
+</RelativeLayout>

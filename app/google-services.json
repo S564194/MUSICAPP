@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "72303524613",
+    "project_id": "login-register-firebase-1eb4b",
+    "storage_bucket": "login-register-firebase-1eb4b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:72303524613:android:01ef99bb61c28bc755d56c",
+        "android_client_info": {
+          "package_name": "com.example.melodify_your_personal_music_companion"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIV1m3ILbpoUqvPj3eNzh5W70tVGmP9ow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
