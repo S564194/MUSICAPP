@@ -1,6 +1,6 @@
 # Melodify-your-personal-music-companion
 
-**Note :** Download the songs and place them in the mobile storage to run the application (drag and drop the songs on to the mobile) [click here](https://drive.google.com/drive/folders/1ikYiqbcQZOV2-f2fKOxtOsFArgLvS7iR?usp=drive_link).
+**Note :** Download the songs and place them in the mobile storage to run the application (drag and drop the songs on to the mobile) .
 
 **Activities :**
   - Main Activity
