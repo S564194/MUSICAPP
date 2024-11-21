@@ -14,8 +14,8 @@
 - Choose your favorite song from the list and get ready to vibe
 - View song details including title, duration, and more.
 - Control playback – Play, pause, or stop your track with ease.
-- Go back to the previous screen by tapping the back button anytime
-
+- Go back to the previous screen by tapping the back button anytime.
+  
 **Team Members :**
 - Rishil Reddy Dandoori – S568997
 - Srujana Ailuri – S564194
@@ -23,7 +23,10 @@
 - Sai Teja Sarvani Majji-S569080
 
  **Pre-Registered Usernames and Passwords :**
+
 - rishilreddy66@gmail.com - Rishil@69182
+
 - saitejasarvanimajji@gmail.com - Sarvani@12
+
 -srujana@gmail.com - 12345678
 
