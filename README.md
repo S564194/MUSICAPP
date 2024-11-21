@@ -8,11 +8,11 @@
   - Music Player Activity
 
 **Steps to proceed :**
-- Tap the application logo.
-- Select the desired song from the available list.
-- Access details of the song such as title, duration, and other information.
-- Control playback options like play, pause, and stop for the selected song.
-- Navigate back to the previous screen by tapping the back button.
+- Tap the app logo to begin your music journey.
+- Choose your favorite song from the list and get ready to vibe
+- View song details including title, duration, and more.
+- Control playback – Play, pause, or stop your track with ease.
+- Go back to the previous screen by tapping the back button anytime
 
 **Team Members :**
 - Rishil Reddy Dandoori – S568997
