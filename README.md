@@ -18,7 +18,8 @@
 - Rishil Reddy Dandoori – S568997
 - Srujana Ailuri – S564194
 - Maneesha Karamsetty– S564554
-- Sai Teja Sarvani Majji– S569080
+- Sai Teja Sarvani Majji-S569080
 
  **Pre-Registered Usernames and Passwords :**
 - rishilreddy66@gmail.com - Rishil@69182
+- saitejasarvanimajji@gmail.com-Sarvani@12
