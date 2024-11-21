@@ -1,5 +1,7 @@
 # Melodify-your-personal-music-companion
 
+![image](https://github.com/user-attachments/assets/99118ac1-7055-4ccc-ab0d-8f14bba18699)
+
 **Note :** Download the songs and place them in the mobile storage to run the application (drag and drop the songs on to the mobile) .
 
 **Activities :**
@@ -14,7 +16,7 @@
 - Control playback – Play, pause, or stop your track with ease.
 - Go back to the previous screen by tapping the back button anytime
 
-**Sequence Information (Activity Flow)**
+**Sequence Information**
 **a. Splash Screen Activity:**
 Displays Melodify's logo and tagline.
 Transitions to the Login Activity after a 3-second delay.
@@ -56,6 +58,8 @@ Click on Playlist: Opens a list of songs within the playlist.
 - Sai Teja Sarvani Majji-S569080
 
  **Pre-Registered Usernames and Passwords :**
+
 - rishilreddy66@gmail.com - Rishil@69182
+
 - saitejasarvanimajji@gmail.com - Sarvani@12
-- srujana@gmail.com - 12345678
+-srujana@gmail.com - 12345678
