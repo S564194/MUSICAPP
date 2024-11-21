@@ -12,56 +12,44 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class SplashScreenActivity extends AppCompatActivity {
-    private FirebaseAuth firebaseAuth;
-    private FirebaseUser currentUser;
-    private Button logoutButton;
-    private TextView userDetailsTextView;
-    private ImageView continueImageView;
+    FirebaseAuth auth;
+    Button button;
+    TextView textView;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
-        // Initialize FirebaseAuth instance
-        firebaseAuth = FirebaseAuth.getInstance();
-
-        // Initialize UI components
-        logoutButton = findViewById(R.id.logout);
-        userDetailsTextView = findViewById(R.id.user_details);
-        continueImageView = findViewById(R.id.melodify_Image);
-
-        // Check if the user is logged in
-        currentUser = firebaseAuth.getCurrentUser();
-
-        if (currentUser == null) {
-            // Redirect to Login activity if user is not logged in
-            navigateToLogin();
-        } else {
-            // Display user email if logged in
-            userDetailsTextView.setText(currentUser.getEmail());
+        auth = FirebaseAuth.getInstance();
+        button = findViewById(R.id.logout);
+        textView = findViewById(R.id.user_details);
+        user = auth.getCurrentUser();
+        if(user == null){
+            Intent intent = new Intent(getApplicationContext(), Login.class);
+            startActivity(intent);
+            finish();
         }
+        else{
+            textView.setText(user.getEmail());
+        }
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getApplicationContext(), Login.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
-        // Set up logout button click listener
-        logoutButton.setOnClickListener(v -> logoutUser());
-
-        // Set up continue button click listener to navigate to MainActivity
-        continueImageView.setOnClickListener(v -> navigateToMain());
-    }
-
-    private void logoutUser() {
-        firebaseAuth.signOut();
-        navigateToLogin();
-    }
-
-    private void navigateToLogin() {
-        Intent loginIntent = new Intent(SplashScreenActivity.this, Login.class);
-        startActivity(loginIntent);
-        finish();
-    }
-
-    private void navigateToMain() {
-        Intent mainIntent = new Intent(SplashScreenActivity.this, MainActivity.class);
-        startActivity(mainIntent);
+        ImageView continueButton = findViewById(R.id.melodify_Image);
+        continueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
