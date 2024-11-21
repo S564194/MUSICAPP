@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputType;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -22,21 +20,23 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class Register extends AppCompatActivity {
-    TextInputEditText editTextEmail, editTextPassword;
-    Button buttonReg;
-    FirebaseAuth auth;
-    ProgressBar progressBar;
-    TextView textView;
+
+    // UI Elements
+    private TextInputEditText inputEmail, inputPassword;
+    private Button registerButton;
+    private ProgressBar loadingIndicator;
+    private TextView loginLink;
+
+    // Firebase Authentication
+    private FirebaseAuth firebaseAuth;
 
     @Override
-    public void  onStart() {
+    public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = auth.getCurrentUser();
-        if (currentUser != null) {
-            Intent intent = new Intent(getApplicationContext(), SplashScreenActivity.class);
-            startActivity(intent);
-            finish();
+        // Check for an already signed-in user
+        FirebaseUser loggedInUser = firebaseAuth.getCurrentUser();
+        if (loggedInUser != null) {
+            moveToSplashScreen();
         }
     }
 
@@ -44,58 +44,87 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        auth = FirebaseAuth.getInstance();
-        editTextEmail = findViewById(R.id.email);
-        editTextPassword = findViewById(R.id.password);
-        buttonReg = findViewById(R.id.btn_register);
-        progressBar = findViewById(R.id.progressBar);
-        textView = findViewById(R.id.loginNow);
-        textView.setOnClickListener(new View.OnClickListener() {
+
+        // Initialize FirebaseAuth instance
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        // Link UI components
+        inputEmail = findViewById(R.id.email);
+        inputPassword = findViewById(R.id.password);
+        registerButton = findViewById(R.id.btn_register);
+        loadingIndicator = findViewById(R.id.progressBar);
+        loginLink = findViewById(R.id.loginNow);
+
+        // Navigate to login screen
+        loginLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Login.class);
-                startActivity(intent);
-                finish();
+                moveToLoginScreen();
             }
         });
-        buttonReg.setOnClickListener(new View.OnClickListener() {
+
+        // Handle registration
+        registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressBar.setVisibility(View.VISIBLE);
-                String email, password;
-                email = String.valueOf(editTextEmail.getText());
-                password = String.valueOf(editTextPassword.getText());
-                if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(Register.this, "Enter email", Toast.LENGTH_SHORT).show();
-                    return;
+                loadingIndicator.setVisibility(View.VISIBLE);
+
+                String email = inputEmail.getText() != null ? inputEmail.getText().toString().trim() : "";
+                String password = inputPassword.getText() != null ? inputPassword.getText().toString().trim() : "";
+
+                if (isInputValid(email, password)) {
+                    createAccount(email, password);
+                } else {
+                    loadingIndicator.setVisibility(View.GONE);
                 }
-
-                if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(Register.this, "Enter email", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                auth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    progressBar.setVisibility(View.GONE);
-                                    Toast.makeText(Register.this, "Account created."
-                                            , Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), Login.class);
-                                    startActivity(intent);
-                                    finish();
-
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    Toast.makeText(Register.this, "Authentication failed."
-                                            , Toast.LENGTH_SHORT).show();
-
-                                }
-                            }
-                        });
             }
         });
+    }
+
+    private boolean isInputValid(String email, String password) {
+        if (TextUtils.isEmpty(email)) {
+            displayToastMessage("Please provide a valid email.");
+            return false;
+        }
+
+        if (TextUtils.isEmpty(password)) {
+            displayToastMessage("Password cannot be empty.");
+            return false;
+        }
+
+        return true;
+    }
+
+    private void createAccount(String email, String password) {
+        firebaseAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        loadingIndicator.setVisibility(View.GONE);
+
+                        if (task.isSuccessful()) {
+                            displayToastMessage("Registration successful!");
+                            moveToLoginScreen();
+                        } else {
+                            displayToastMessage("Failed to register. Please try again.");
+                        }
+                    }
+                });
+    }
+
+    private void moveToLoginScreen() {
+        Intent intent = new Intent(Register.this, Login.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void moveToSplashScreen() {
+        Intent intent = new Intent(Register.this, SplashScreenActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void displayToastMessage(String message) {
+        Toast.makeText(Register.this, message, Toast.LENGTH_SHORT).show();
     }
 }
