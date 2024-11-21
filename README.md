@@ -16,7 +16,8 @@
 - Control playback – Play, pause, or stop your track with ease.
 - Go back to the previous screen by tapping the back button anytime
 
-**Sequence Information**
+**Sequence Information**(Activity Flow)
+
 **a. Splash Screen Activity:**
 Displays Melodify's logo and tagline.
 Transitions to the Login Activity after a 3-second delay.
