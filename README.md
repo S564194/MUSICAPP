@@ -22,3 +22,4 @@
 
  **Pre-Registered Usernames and Passwords :**
 - rishilreddy66@gmail.com - Rishil@69182
+- saitejasarvanimajji@gmail.com - Sarvani@12
