@@ -1,5 +1,7 @@
 # Melodify-your-personal-music-companion
 
+![image](https://github.com/user-attachments/assets/99118ac1-7055-4ccc-ab0d-8f14bba18699)
+
 **Note :** Download the songs and place them in the mobile storage to run the application (drag and drop the songs on to the mobile) .
 
 **Activities :**
@@ -24,3 +26,4 @@
 - rishilreddy66@gmail.com - Rishil@69182
 - saitejasarvanimajji@gmail.com - Sarvani@12
 -srujana@gmail.com - 12345678
+
