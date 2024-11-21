@@ -27,7 +27,7 @@ public class Login extends AppCompatActivity {
     TextView textView;
 
     @Override
-    public void  onStart() {
+    public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = auth.getCurrentUser();
@@ -48,6 +48,7 @@ public class Login extends AppCompatActivity {
         buttonLogin = findViewById(R.id.btn_login);
         progressBar = findViewById(R.id.progressBar);
         textView = findViewById(R.id.registerNow);
+
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,13 +65,16 @@ public class Login extends AppCompatActivity {
                 String email, password;
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf(editTextPassword.getText());
+
                 if (TextUtils.isEmpty(email)) {
+                    progressBar.setVisibility(View.GONE); // Reset progress bar visibility
                     Toast.makeText(Login.this, "Enter email", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(Login.this, "Enter email", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE); // Reset progress bar visibility
+                    Toast.makeText(Login.this, "Enter password", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -78,19 +82,15 @@ public class Login extends AppCompatActivity {
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
+                                progressBar.setVisibility(View.GONE); // Reset progress bar visibility
 
                                 if (task.isSuccessful()) {
-                                    progressBar.setVisibility(View.GONE);
-                                    Toast.makeText(Login.this, "Login Successful"
-                                            , Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), SplashScreenActivity.class);
                                     startActivity(intent);
                                     finish();
-
                                 } else {
-                                    Toast.makeText(Login.this, "Authentication failed."
-                                            , Toast.LENGTH_SHORT).show();
-
+                                    Toast.makeText(Login.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
