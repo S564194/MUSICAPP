@@ -69,4 +69,5 @@ Click on Playlist: Opens a list of songs within the playlist.
 - rishilreddy66@gmail.com - Rishil@69182
 
 - saitejasarvanimajji@gmail.com - Sarvani@12
--srujana@gmail.com - 12345678
+- srujana@gmail.com - 12345678
+- manu@gmail.com - 12345678
